@@ -6,18 +6,18 @@
 }
 
 html, body{
-    background-color: yellowgreen;
+    background-color: #BECAF4;
 }
 
 .container-main{
-    border: 7px solid rgb(145, 132, 72);
+    border: 7px solid #497CDF;
     border-radius: 30px;
     margin: 2rem;
-    background-color: rgb(227, 111, 229);
+    background-color: #3359A3;
 }
 
 nav, section, footer, aside, article{
-    border: 4px solid rgb(255, 0, 0);
+    border: 4px solid #1F396C;
     margin: 1rem;
     border-radius: 10px;
     padding: 1rem;
@@ -30,5 +30,5 @@ article, aside{
 }
 
 nav, section, footer{
-    background-color: rgb(232, 83, 64);
+    background-color: #0C1B39;
 }
