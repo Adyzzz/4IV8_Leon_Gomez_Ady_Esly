@@ -1,0 +1,98 @@
+/* Reset básico para limpiar márgenes y rellenos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body {
+    background-color: #BECAF4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+}
+
+.form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+    width: 100%;
+    max-width: 400px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+
+.grupo {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+input {
+    background: none;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc; 
+    outline: none;
+    transition: 0.3s ease all;
+}
+
+
+input:focus {
+    border-bottom: 2px solid #4a90e2; 
+}
+
+label {
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    pointer-events: none;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+button {
+    background: #1F396C;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #357abd;
+}
+
+a
+#warnings {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #e74c3c;
+    text-align: center;
+}
+
+
+.barra {
+    position: relative;
+    display: block;
+    width: 100%;
+}
