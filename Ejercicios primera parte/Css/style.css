@@ -1,0 +1,127 @@
+:root {
+  --bg-principal: #BECAF4;
+  --bg-tarjeta: #FFFFFF;
+  --color-texto: #0C1B39;
+  --color-primario: #497CDF;
+  --color-primario-hover: #3359A3;
+  --color-secundario: #1F396C;
+  --color-borde: #0C1B39;
+  --color-exito: #88A2EB;
+  --color-error: #EF476F;
+  --sombra: 0 4px 6px -1px rgba(12, 27, 57, 0.1), 0 2px 4px -1px rgba(12, 27, 57, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-principal);
+  color: var(--color-texto);
+  line-height: 1.5;
+  padding: 40px 20px;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.exercise-card {
+  background-color: var(--bg-tarjeta);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  border-top: 5px solid var(--color-primario);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px -3px rgba(12, 27, 57, 0.15);
+}
+
+.exercise-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-borde);
+  color: var(--color-secundario);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-secundario);
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  color: var(--color-texto);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(73, 124, 223, 0.2);
+}
+
+.is-invalid {
+  border-color: var(--color-error) !important;
+  background-color: #FFF0F3;
+}
+
+.is-invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 71, 111, 0.2) !important;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--color-primario);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-primario-hover);
+}
+
+.result-display {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--bg-principal);
+  border-left: 4px solid var(--color-exito);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
