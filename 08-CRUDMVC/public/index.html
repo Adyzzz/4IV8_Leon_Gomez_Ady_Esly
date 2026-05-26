@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUDMVC</title>
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
     <header>
@@ -53,5 +54,24 @@
 
     </div>
     
+    <section class="tabla-section">
+        <h2>usuarios <span id="contador-usuarios" class="badge bade-neutral"></span></h2>
+        <p id="carga-usuarios">cargando...</p>
+        <table id="tabla-usuarios" style="display:none;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-usuarios"></tbody>
+
+        </table>
+
+    </section>
+
+    <script src="./JS/app.js"></script>
 </body>
 </html>
