@@ -35,7 +35,9 @@ app.use(express.static(path.join(__dirname, '..', 'public')));
 const usuariosRouter = require('./Routers/usuarios');
 const productosRouter = require('./Routers/productos');
 const comprasRouter = require('./Routers/compras');
+const caminatasRouter = require('./Routers/caminatas');
 
+app.use('/api/caminatas', caminatasRouter);
 app.use('/api/usuarios', usuariosRouter);
 app.use('/api/productos', productosRouter);
 app.use('/api/compras', comprasRouter);

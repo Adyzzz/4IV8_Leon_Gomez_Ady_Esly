@@ -573,7 +573,119 @@ async function eliminarCompra(id) {
 }
 
 // ============================================================
-// 5. NAVEGACIÓN POR PESTAÑAS
+// MÓDULO 5: CAMINATAS (TU HOBBY)
+// ============================================================
+
+const seccionCaminatas = document.getElementById('seccion-caminatas');
+const formCaminata = document.getElementById('form-caminata');
+const tbodyCaminatas = document.getElementById('tbody-caminatas');
+const tablaCaminatas = document.getElementById('tabla-caminatas');
+const cargaCaminatas = document.getElementById('carga-caminatas');
+const contadorCaminatas = document.getElementById('contador-caminatas');
+
+const inputCaminataLugar = document.getElementById('caminata-lugar');
+const inputCaminataFecha = document.getElementById('caminata-fecha');
+const inputCaminataDistancia = document.getElementById('caminata-distancia');
+const inputCaminataDuracion = document.getElementById('caminata-duracion');
+
+// 2. Función para cargar la tabla (GET)
+async function cargarCaminatas() {
+    try {
+        cargaCaminatas.style.display = 'block';
+        tablaCaminatas.style.display = 'none';
+        cargaCaminatas.textContent = 'Cargando...';
+
+        const respuesta = await fetchAPI('/api/caminatas');
+        
+        tbodyCaminatas.innerHTML = '';
+        contadorCaminatas.textContent = respuesta.count || 0;
+
+        if (respuesta.count === 0) {
+            cargaCaminatas.textContent = 'No hay caminatas registradas aún.';
+            return;
+        }
+
+        respuesta.data.forEach(cam => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${cam.id}</td>
+                <td>${cam.lugar}</td>
+                <td>${cam.fecha}</td>
+                <td>${cam.distancia}</td>
+                <td>${cam.duracion}</td>
+                <td>
+                    <button class="btn-peligro btn-sm" onclick="eliminarCaminata(${cam.id})">Eliminar</button>
+                </td>
+            `;
+            tbodyCaminatas.appendChild(tr);
+        });
+
+        cargaCaminatas.style.display = 'none';
+        tablaCaminatas.style.display = 'table';
+    } catch (error) {
+        cargaCaminatas.textContent = 'Error al cargar el historial de caminatas.';
+        console.error(error);
+    }
+}
+
+// 3. Evento para guardar una nueva caminata (POST)
+formCaminata.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nuevaCaminata = {
+        lugar: inputCaminataLugar.value,
+        fecha: inputCaminataFecha.value,
+        distancia: inputCaminataDistancia.value,
+        duracion: inputCaminataDuracion.value
+    };
+
+    try {
+        await fetchAPI('/api/caminatas', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(nuevaCaminata)
+        });
+
+        if (typeof mostrarNotificacion === 'function') {
+            mostrarNotificacion('Caminata registrada con éxito', 'success');
+        } else {
+            alert('Caminata registrada con éxito');
+        }
+        
+        formCaminata.reset();
+        cargarCaminatas(); // Recargamos la tabla
+    } catch (error) {
+        if (typeof mostrarNotificacion === 'function') {
+            mostrarNotificacion(error.message, 'error');
+        } else {
+            alert('Error: ' + error.message);
+        }
+    }
+});
+
+// 4. Función para eliminar (DELETE)
+async function eliminarCaminata(id) {
+    if (!confirm(`¿Estás seguro de eliminar la caminata #${id}?`)) return;
+
+    try {
+        await fetchAPI(`/api/caminatas/${id}`, { method: 'DELETE' });
+        
+        if (typeof mostrarNotificacion === 'function') {
+            mostrarNotificacion('Caminata eliminada', 'success');
+        }
+        
+        cargarCaminatas(); // Recargamos la tabla
+    } catch (error) {
+        if (typeof mostrarNotificacion === 'function') {
+            mostrarNotificacion(error.message, 'error');
+        } else {
+            alert('Error: ' + error.message);
+        }
+    }
+}
+
+// ============================================================
+// 6. NAVEGACIÓN POR PESTAÑAS
 // ============================================================
 // Esta función muestra una sección y oculta las demás.
 // También actualiza la pestaña activa visualmente.
@@ -605,10 +717,14 @@ function cambiarSeccion(seccion) {
         cargarSelectProductos();
         cargarCompras();
     }
+
+    if (seccion === 'caminatas') {
+        cargarCaminatas();
+    }
 }
 
 // ============================================================
-// 6. INICIALIZACIÓN
+// 7. INICIALIZACIÓN
 // ============================================================
 // Al cargar la página, cargamos todos los datos iniciales.
 document.addEventListener('DOMContentLoaded', () => {

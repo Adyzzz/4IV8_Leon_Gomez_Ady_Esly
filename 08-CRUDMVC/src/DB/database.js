@@ -1,9 +1,8 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
-//creamos la conexión
 const pool = mysql.createPool({
     host : 'localhost',
-    user :'root',
+    user : 'root',
     password : 'Adg135z6c67adg_',
     database : 'practicacrud',
     waitForConnections : true,
@@ -11,5 +10,4 @@ const pool = mysql.createPool({
     queueLimit : 0
 });
 
-//la exportamos para poder usarla
-module.express = pool.promise();
+module.exports = pool;
