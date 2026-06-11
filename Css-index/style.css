@@ -1,0 +1,115 @@
+:root {
+    --color-prits-1: #BECAF4; 
+    --color-prits-2: #88A2EB; 
+    --color-prits-3: #497CDF; 
+    --color-prits-4: #3359A3; 
+    --color-prits-5: #1F396C; 
+    --color-prits-6: #0C1B39; 
+    
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: #f4f6f9; 
+    color: var(--color-prits-6);
+    line-height: 1.6;
+}
+
+/* Contenedor principal */
+.container-main {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(12, 27, 57, 0.1);
+    border-top: 6px solid var(--color-prits-5);
+}
+
+h1, h2, h3 {
+    color: var(--color-prits-5);
+    margin-bottom: 15px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid var(--color-prits-1);
+    margin: 25px 0;
+}
+
+.informacion-curso {
+    background-color: var(--color-prits-1);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--color-prits-3);
+}
+
+.subtitle {
+    color: var(--color-prits-4);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.btn, .main-links a, .button-grid a, .examenes a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: var(--color-prits-4);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-align: center;
+}
+
+.btn:hover, .main-links a:hover, .button-grid a:hover, .examenes a:hover {
+    background-color: var(--color-prits-6);
+    transform: translateY(-2px);
+}
+
+.main-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.exercises-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid var(--color-prits-2);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.exercises-title {
+    font-weight: bold;
+    color: var(--color-prits-5);
+    margin-bottom: 15px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.examenes {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: var(--color-prits-2);
+    border-radius: 8px;
+}
+
+.examenes p {
+    color: var(--color-prits-6);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
